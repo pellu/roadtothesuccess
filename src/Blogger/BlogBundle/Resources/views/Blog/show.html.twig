@@ -1,0 +1,41 @@
+{# src/Blogger/BlogBundle/Resources/views/Blog/show.html.twig #}
+{% include "::header.html.twig" %}
+{% block stylesheets %}
+    <link href="{{ asset('http://localhost/LeCoinDesPious/web/css/style.css') }}" type="text/css" rel="stylesheet" />
+    <style>.blog-artical{  width: 97%;}
+        img{width: 100%}
+        .previous-comments{margin-left: 20px;}
+        .previous-comments h3{font-size: 35px;}
+        .blog-tabs{
+            margin-top: -50px;
+            margin-bottom: 50px;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <div class="blog-tabs">
+        <ul class="blog-section">
+            <li class="blog-artical">
+                <div class="blog-artical-head">
+                    <img class="artical-img" src="http://localhost{{ asset(['images/', blog.image2]|join) }}" alt="{{ blog.title }} image not found" class="large">
+                    <ul class="artical-date">
+                        <li><a href="#"><time datetime="{{ blog.created|date('b') }}">{{ blog.created|date('l, F j, Y') }}</time></a></li>
+                        <li><a class="text-icon" href="#"> </a>{{blog.author}}</li>
+                        <div class="clear"> </div>
+                    </ul>
+                </div>
+                <div class="artical-info">
+                    <a href="#"><h4>What is lorem ipsum ?</h4></a>
+                    <p>{{ blog.blog }}</p>
+                </div>
+                <section class="comments" id="comments">
+                    <section class="previous-comments">
+                        <h3>Commentaires</h3>
+                        {% include 'BloggerBlogBundle:Comment:index.html.twig' with { 'comments': comments } %}
+                    </section>
+                </section>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+{% include "::footer.html.twig" %}
