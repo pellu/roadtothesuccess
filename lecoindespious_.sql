@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mer 02 Mars 2016 à 21:05
+-- Généré le :  Jeu 03 Mars 2016 à 14:59
 -- Version du serveur :  10.1.9-MariaDB
 -- Version de PHP :  5.6.15
 
@@ -35,7 +35,7 @@ CREATE TABLE `blog` (
   `created` datetime NOT NULL,
   `updated` datetime NOT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `image2` text COLLATE utf8_unicode_ci NOT NULL
+  `image2` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -67,7 +67,7 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`id`, `blog_id`, `user`, `comment`, `approved`, `created`, `updated`) VALUES
-(1, 1, 'pellu', 'fgdfg dfg dfg dfg dfgd', 0, '2016-02-03 00:00:00', '2016-02-03 00:00:00');
+(1, 1, 'pellu', 'fgdfg dfg dfg dfg dfgd', 1, '2016-02-03 00:00:00', '2016-02-03 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -92,15 +92,20 @@ CREATE TABLE `fos_user` (
   `password_requested_at` datetime DEFAULT NULL,
   `roles` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `credentials_expired` tinyint(1) NOT NULL,
-  `credentials_expire_at` datetime DEFAULT NULL
+  `credentials_expire_at` datetime DEFAULT NULL,
+  `youtube` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `twitter` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `facebook` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `twitch` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `profile_picture_path` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `fos_user`
 --
 
-INSERT INTO `fos_user` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`) VALUES
-(1, 'pellu', 'pellu', 'pellu@pellu.pellu', 'pellu@pellu.pellu', 1, '9mmcafce0xkw0ckgcsso48k4800kcwk', '$2y$13$9mmcafce0xkw0ckgcsso4uQWzrxEaoDT91zf/NLq5UXuUBLtwqp4C', '2016-03-02 20:34:20', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL);
+INSERT INTO `fos_user` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `youtube`, `twitter`, `facebook`, `twitch`, `profile_picture_path`) VALUES
+(1, 'pellu', 'pellu', 'jordanpelluard@gmail.com', 'jordanpelluard@gmail.com', 1, '9mmcafce0xkw0ckgcsso48k4800kcwk', '$2y$13$9mmcafce0xkw0ckgcsso4uQWzrxEaoDT91zf/NLq5UXuUBLtwqp4C', '2016-03-03 14:49:32', 0, 0, NULL, 'Naq34gt8bI0dD_CE97QPE2_mBlqUamlr8aZQVBkhaLc', '2016-03-03 10:05:23', 'a:0:{}', 0, NULL, NULL, NULL, NULL, NULL, '85be6ddc0a20768c73ced237a2ae97ef.jpeg');
 
 --
 -- Index pour les tables exportées
@@ -145,7 +150,7 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT pour la table `fos_user`
 --
 ALTER TABLE `fos_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Contraintes pour les tables exportées
 --
