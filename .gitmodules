@@ -1,0 +1,3 @@
+[submodule "vendor/bundles/Gregwar/ImageBundle"]
+	path = vendor/bundles/Gregwar/ImageBundle
+	url = git://github.com/Gregwar/ImageBundle.git

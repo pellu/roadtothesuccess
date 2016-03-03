@@ -81,6 +81,3 @@ fos_user:
     profile:
             form:
                 type: UserBundle\Form\ProfileType
-
-# SimpleMediaBundle
-

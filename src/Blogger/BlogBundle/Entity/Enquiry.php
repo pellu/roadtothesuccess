@@ -10,64 +10,19 @@ use Symfony\Component\Validator\Constraints\Length;
 
 class Enquiry
 {
-	protected $name;
+	private $id;
+	private $date;
+	private $title;
+	private $author;
+	private $content;
+	private $published = true;
+	private $image;
+	private $categories;
+	private $applications;
+	private $updatedAt;
+	private $nbApplications = 0;
+	private $slug;
 
-	protected $email;
 
-	protected $subject;
-
-	protected $body;
-
-	public function getName()
-	{
-		return $this->name;
-	}
-
-	public function setName($name)
-	{
-		$this->name = $name;
-	}
-
-	public function getEmail()
-	{
-		return $this->email;
-	}
-
-	public function setEmail($email)
-	{
-		$this->email = $email;
-	}
-
-	public function getSubject()
-	{
-		return $this->subject;
-	}
-
-	public function setSubject($subject)
-	{
-		$this->subject = $subject;
-	}
-
-	public function getBody()
-	{
-		return $this->body;
-	}
-
-	public function setBody($body)
-	{
-		$this->body = $body;
-	}
-
-	public static function loadValidatorMetadata(ClassMetadata $metadata)
-	{
-		$metadata->addPropertyConstraint('name', new NotBlank());
-
-		$metadata->addPropertyConstraint('email', new Email());
-
-		$metadata->addPropertyConstraint('subject', new NotBlank());
-		$metadata->addPropertyConstraint('subject', new Length(50));
-
-		$metadata->addPropertyConstraint('body', new Length(50));
-	}
-
+	// … Les getters et setters
 }
