@@ -19,7 +19,8 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new UserBundle\UserBundle(),
             new Blogger\BlogBundle\BloggerBlogBundle(),
-        );
+            new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle()
+    );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
