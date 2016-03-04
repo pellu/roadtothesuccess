@@ -1,0 +1,17 @@
+{% include "::header.html.twig" %}
+{% block stylesheets %}
+    <link href="{{ asset('http://localhost/roadtothesuccess/web/css/style.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    <form id="loginForm" action="" method="post" {{ form_enctype(form) }}>
+        <h3>Ajouter un acteur</h3>
+
+        {{ form_widget(form) }}
+        <label></label><input id="login" type="submit" />
+    </form>
+
+{% include "::footer.html.twig" %}

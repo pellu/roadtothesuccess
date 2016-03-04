@@ -54,7 +54,7 @@ body{
 	margin: 0 auto;
 }
 .wrap .content{
-	background-color: rgba(255, 255, 255, 0.5);
+	background-color: rgba(255, 255, 255, 0.8);
 	padding-top: 30px;
 }
 .wrap input[type="text"],.wrap input[type="button"],.wrap input[type="submit"]{
@@ -633,8 +633,6 @@ nav a#pull:hover .clearfix ul{
 }
 /* Login Form */
 #loginForm {
-	float: right;
-	width: 280px;
 	margin-top: 21px;
 	background: #3F67C0;
 }
@@ -649,9 +647,9 @@ fieldset#body {
     margin:0;
 }
 #loginForm #checkbox {
-    width:auto;
+    /*width:auto;
     margin:1px 6px 0 0;
-    float:left;
+    float:left;*/
     padding:0;
     border:0;
     *margin:-3px 9px 0 0; /* IE7 Fix */
@@ -681,7 +679,7 @@ fieldset#body {
 }
 /* Default Input */
 #loginForm input {
-   width: 92%;
+   width: 35%;
 	border: 1px solid #e5e5e5;
 	color: #000;
 	background: #f9f9f9;
@@ -689,14 +687,14 @@ fieldset#body {
 	font-size: 0.85em;
 	font-family: 'open_sansregular';
 	margin: 1em 0 1.5em 0px;
-	display: block;
+	/*display: block;*/
 }
 /* Sign In Button */
 #loginForm #login {
 	font-family: 'open_sansregular';
 	text-transform: uppercase;
 	width: auto;
-	float: left;
+	/*float: left;*/
 	background: #35B5EB;
 	color: #fff;
 	font-size: 0.9em;
@@ -2173,13 +2171,16 @@ input[type=checkbox].css-checkbox13:checked + label.css-label13 {
 /*---start-copy-right----*/
 .copy-right{
 	text-align:center;
-	padding:1em 0;
+	line-height: 60px;
 	margin-top:3em;
+	background: #000;
+	opacity: 0.9;
 }
 .copy-right p{
 	font-size: 1em;
-	color:black;
+	color:white;
 	letter-spacing: 0.05em;
+	vertical-align
 }
 .copy-right p a{
 	color:#EB5B4C;
@@ -3133,7 +3134,98 @@ input[type=checkbox].css-checkbox13:checked + label.css-label13 {
 }
 
 .avatar{
-	width: 100px;
-	height: 100px;
-	background: #000;
+	display: inline-block;
+	width: 150px;
+	background: #fff;
+	margin-left:115px;
+}
+
+.avatar img{
+	width: 100%;
+	vertical-align: middle;
+}
+
+#fos_user_registration_form label{
+	display: inline-block;
+	text-align: right;
+	width: 300px;
+	margin-right: 20px;
+}
+
+#loginForm h3{
+	margin-left:320PX;
+	color: #fff;
+	font-size: 24px;
+	margin-bottom:20px;
+}
+
+#loginForm{
+	color: white;
+}
+
+#loginForm #fos_user_registration_form_profilePictureFile{
+	font-family: 'open_sansregular';
+	width: auto;
+	background: none;
+	border: none;
+	color: white;
+}
+
+#loginForm{
+	padding: 50px 0;
+}
+
+#loginForm label{
+	display: inline-block;
+	text-align: right;
+	width: 300px;
+	margin-right: 20px;
+}
+
+footer{
+	clear: both;
+	height: 60px;
+}
+
+#loginForm #remember_me{
+	width: auto;
+}
+
+#loginForm .password_forgotten{
+	color: white;
+}
+
+#loginForm .password_forgotten:hover{
+	text-decoration: underline;
+	transition: all 0.2s ease-in-out;
+}
+
+#loginForm .infos{
+	vertical-align: top;
+	display: inline-block;
+	margin-left:50px;
+	font-size: 18px;
+}
+
+#loginForm .infos p{
+	margin-bottom:20px;
+}
+
+#loginForm .infos a{
+	color: white;
+}
+
+#loginForm .infos a:hover{
+	text-decoration: underline;
+	transition: all 0.2s ease-in-out;
+	color: #35B5EB;
+}
+
+#loginForm textarea{
+	min-width: 36%;
+	min-height:500px;
+}
+
+#loginForm label.article{
+	vertical-align: top;
 }

@@ -1,10 +1,20 @@
-<div class="fos_user_user_show">
-    <div class="avatar"><img src="{{ user.webProfilePicturePath }}" alt="Image de profil de {{ user.username }}"></div>
-    <p>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}: {{ user.username }}</p>
-    <p>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}: {{ user.email }}</p>
-    <p>{{ 'Chaîne Youtube'|trans({}, 'FOSUserBundle') }}: {{ user.youtube }}</p>
-    <p>{{ 'Twitter'|trans({}, 'FOSUserBundle') }}: {{ user.twitter }}</p>
-    <p>{{ 'Page Facebook'|trans({}, 'FOSUserBundle') }}: {{ user.facebook }}</p>
-    <p>{{ 'Chaîne Twitch'|trans({}, 'FOSUserBundle') }}: {{ user.twitch }}</p>
+<div id="loginForm" class="fos_user_user_show">
+    <h3>Mon profil</h3>
+    {% if user.profilePicturePath == null %}
+        <div class="avatar"><img src="{{ user.noProfilePicturePath }}" alt="Image de profil de {{ user.username }}"></div>
+    {%  else %}
+        <div class="avatar"><img src="{{ user.webProfilePicturePath }}" alt="Image de profil de {{ user.username }}"></div>
+    {% endif  %}
+    <div class="infos">
+        <p>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}: {{ user.username }}</p>
+        <p>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}: {{ user.email }}</p>
+        <p>{{ 'Chaîne Youtube'|trans({}, 'FOSUserBundle') }}: <a target="_blank" href="{{ user.youtube }}">{{ user.youtube }}</a></p>
+        <p>{{ 'Twitter'|trans({}, 'FOSUserBundle') }}: <a target="_blank" href="{{ user.twitter }}">{{ user.twitter }}</a></p>
+        <p>{{ 'Page Facebook'|trans({}, 'FOSUserBundle') }}: <a target="_blank" href="{{ user.facebook }}">{{ user.facebook }}</a></p>
+        <p>{{ 'Chaîne Twitch'|trans({}, 'FOSUserBundle') }}: <a target="_blank" href="{{ user.twitch }}">{{ user.twitch }}</a></p>
+        <a id="login" href="http://localhost/roadtothesuccess/web/blog/ajouter">Ajouter un article</a>
+    </div>
+
+
 
 </div>

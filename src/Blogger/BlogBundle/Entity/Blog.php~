@@ -4,16 +4,16 @@
 namespace Blogger\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use UserBundle\Entity\User;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="blog")
- * @ORM\HasLifecycleCallbacks()
  */
 class Blog
 {
     /**
-     * @ORM\Id 
+     * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -25,9 +25,12 @@ class Blog
     protected $title;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="blog" )
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     *
+     * @var User $user
      */
-    protected $author;
+    protected $user;
 
     /**
      * @ORM\Column(type="text")
@@ -35,16 +38,26 @@ class Blog
     protected $blog;
 
     /**
-     * @ORM\Column(type="string", length="20")
+     * @ORM\Column(type="string")
      */
     protected $image;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $image2;
 
     /**
      * @ORM\Column(type="text")
      */
     protected $tags;
 
-    protected $comments;
+    protected $comments = array();
+
+    public function getComments()
+    {
+        return $this->comments;
+    }
 
     /**
      * @ORM\Column(type="datetime")
@@ -61,7 +74,6 @@ class Blog
         $this->setCreated(new \DateTime());
         $this->setUpdated(new \DateTime());
     }
-
     /**
      * @ORM\preUpdate
      */
@@ -73,7 +85,7 @@ class Blog
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -84,16 +96,19 @@ class Blog
      * Set title
      *
      * @param string $title
+     * @return Blog
      */
     public function setTitle($title)
     {
         $this->title = $title;
+
+        return $this;
     }
 
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -101,49 +116,36 @@ class Blog
     }
 
     /**
-     * Set author
-     *
-     * @param string $author
-     */
-    public function setAuthor($author)
-    {
-        $this->author = $author;
-    }
-
-    /**
-     * Get author
-     *
-     * @return string 
-     */
-    public function getAuthor()
-    {
-        return $this->author;
-    }
-
-    /**
      * Set blog
      *
-     * @param text $blog
+     * @param string $blog
+     * @return Blog
      */
     public function setBlog($blog)
     {
         $this->blog = $blog;
+
+        return $this;
     }
 
     /**
      * Get blog
      *
-     * @return text 
+     * @return string
      */
-    public function getBlog()
+    public function getBlog($length = null)
     {
-        return $this->blog;
+        if (false === is_null($length) && $length > 0)
+            return substr($this->blog, 0, $length);
+        else
+            return $this->blog;
     }
 
     /**
      * Set image
      *
      * @param string $image
+     * @return Blog
      */
     public function setImage($image)
     {
@@ -153,9 +155,32 @@ class Blog
     }
 
     /**
+     * Set image
+     *
+     * @param string $image
+     * @return Blog
+     */
+    public function setImage2($image2)
+    {
+        $this->image = $image2;
+
+        return $this;
+    }
+
+    /**
      * Get image
      *
-     * @return string 
+     * @return string
+     */
+    public function getImage2()
+    {
+        return $this->image2;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
      */
     public function getImage()
     {
@@ -165,17 +190,20 @@ class Blog
     /**
      * Set tags
      *
-     * @param text $tags
+     * @param string $tags
+     * @return Blog
      */
     public function setTags($tags)
     {
         $this->tags = $tags;
+
+        return $this;
     }
 
     /**
      * Get tags
      *
-     * @return text 
+     * @return string
      */
     public function getTags()
     {
@@ -185,17 +213,20 @@ class Blog
     /**
      * Set created
      *
-     * @param datetime $created
+     * @param \DateTime $created
+     * @return Blog
      */
     public function setCreated($created)
     {
         $this->created = $created;
+
+        return $this;
     }
 
     /**
      * Get created
      *
-     * @return datetime 
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -205,20 +236,50 @@ class Blog
     /**
      * Set updated
      *
-     * @param datetime $updated
+     * @param \DateTime $updated
+     * @return Blog
      */
     public function setUpdated($updated)
     {
         $this->updated = $updated;
+
+        return $this;
     }
 
     /**
      * Get updated
      *
-     * @return datetime 
+     * @return \DateTime
      */
     public function getUpdated()
     {
         return $this->updated;
+    }
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+
+    /**
+     * Set user
+     *
+     * @param \UserBundle\Entity\User $user
+     * @return Blog
+     */
+    public function setUser(\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

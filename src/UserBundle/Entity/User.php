@@ -24,6 +24,14 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @ORM\OneToMany(targetEntity="Blogger\BlogBundle\Entity\Blog", mappedBy="user")
+     * @ORM\OrderBy({"createdAt" = "DESC"})
+     *
+     * @var ArrayCollection $blog
+     */
+    protected $blog;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $youtube;
@@ -259,6 +267,16 @@ class User extends BaseUser
      *
      * @return string
      */
+    public function getNoProfilePicturePath() {
+
+        return '/roadtothesuccess/web/'.$this->getUploadDir().'/no-profile.png';
+    }
+
+    /**
+     * Get the web path for the user
+     *
+     * @return string
+     */
     public function getWebProfilePicturePath() {
 
         return '/roadtothesuccess/web/'.$this->getUploadDir().'/'.$this->getProfilePicturePath();
@@ -333,4 +351,37 @@ class User extends BaseUser
         }
     }
 
+
+    /**
+     * Add blog
+     *
+     * @param \Blogger\BlogBundle\Entity\Blog $blog
+     * @return User
+     */
+    public function addBlog(\Blogger\BlogBundle\Entity\Blog $blog)
+    {
+        $this->blog[] = $blog;
+    
+        return $this;
+    }
+
+    /**
+     * Remove blog
+     *
+     * @param \Blogger\BlogBundle\Entity\Blog $blog
+     */
+    public function removeBlog(\Blogger\BlogBundle\Entity\Blog $blog)
+    {
+        $this->blog->removeElement($blog);
+    }
+
+    /**
+     * Get blog
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBlog()
+    {
+        return $this->blog;
+    }
 }

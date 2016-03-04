@@ -23,6 +23,10 @@ BloggerBlogBundle_blog_show:
         _method: GET
         id: \d+
 
+BloggerBlogBundle_ajouter:
+    pattern:  /blog/ajouter
+    defaults: { _controller: BloggerBlogBundle:Blog:ajouter }
+
 BloggerBlogBundle_comment_create:
     pattern:  blog/comment/{blog_id}/
     defaults: { _controller: BloggerBlogBundle:Comment:create }

@@ -1,14 +1,10 @@
-<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+<form id="loginForm" action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+    <h3>Modifier mon profil</h3>
     <fieldset>
-        <style>
-            input#remember_me{
-                margin-top: -18px;
-                margin-left: 50px;
-            }
-        </style>
         <fieldset>
             {{ form_widget(form) }}
-            <input type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />
+            <label></label>
+            <input id="login" type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />
         </fieldset>
     </fieldset>
 </form>

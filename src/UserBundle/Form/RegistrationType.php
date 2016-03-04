@@ -8,7 +8,7 @@ class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('profilePictureFile', null, array('label' => 'Importer une photo de profil: ', 'required' => true));
+        $builder->add('profilePictureFile', null, array('label' => 'Importer une photo de profil: ', 'required' => false));
     }
 
     public function getParent()
